@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL**: [https://lovable.dev/projects/EsqwayaStudy](https://lovable.dev/projects/f5b0d7e9-5c5b-438d-90d9-6a74bc3556fd)
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Simply visit the [[Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) ](https://lovable.dev/projects/f5b0d7e9-5c5b-438d-90d9-6a74bc3556fd) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
