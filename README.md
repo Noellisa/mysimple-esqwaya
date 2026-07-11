@@ -1,73 +1,125 @@
-# Welcome to your Lovable project
+# ⚖️ My Simple Esqwaya
 
-## Project info
+**An interactive case law study platform for law undergraduates in Ghana and Africa.**
 
-**URL**: https://mysimpleesqwaya.lovable.app 
+My Simple Esqwaya (*Esq. — the title for lawyers + making it simple*) helps law students move beyond rote memorisation by giving them a structured, visual, and gamified way to study case law — organised by subject, connected by principle, and tested through quizzes.
 
-## How can I edit this code?
+> Built as a prototype at the Lovable AI Hackathon · Foundation for a Final Year Project
 
-There are several ways of editing your application.
+🔗 **Live Demo**: [mysimpleesqwaya.lovable.app](https://mysimpleesqwaya.lovable.app)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## The Problem
 
-Changes made via Lovable will be committed automatically to this repo.
+Law students in Ghana rely heavily on physical textbooks and case books with no digital tools tailored to their curriculum. Cases across different subjects (Company Law, Contract Law, Tort Law) share overlapping principles but are studied in complete isolation. There is no structured, accessible, and engaging way to study case law digitally for the African law student.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## What My Simple Esqwaya Does
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 📁 Case Directory
+Browse and search a structured database of legal cases filtered by area of law. Each case is broken down into:
+- **Parties** — who was involved
+- **Facts** — what happened
+- **Held** — the court's decision
+- **Ratio Decidendi** — the binding legal reasoning
+- **Obiter Dicta** — additional remarks
+- **Key Legal Principle** — the takeaway rule
 
-Follow these steps:
+### 🔗 Case Relationship Map
+An interactive visual graph showing how cases connect across different areas of law — based on shared principles, legislation, or legal outcomes. See how *Salomon v Salomon* (Company Law) relates to cases in Contract Law through the concept of legal personality.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+### 🎮 Study & Quiz Mode
+Gamified flashcard system to reinforce memory of:
+- Case names and principles
+- Legal terminology
+- Acts, clauses and articles
+- Streak tracking and scoring
+
+---
+
+## Scope (Current Version)
+
+| Area of Law | Status |
+|---|---|
+| Company Law | ✅ Included |
+| Contract Law | ✅ Included |
+| Tort Law | ✅ Included |
+| Constitutional Law | 🔜 Future version |
+| Criminal Law | 🔜 Future version |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React + TypeScript |
+| Styling | Tailwind CSS + shadcn/ui |
+| Build Tool | Vite |
+| Deployment | Lovable / Vercel |
+
+---
+
+## Running Locally
+
+Make sure you have **Node.js and npm** installed — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+```bash
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate into the project
+cd mysimple-esqwaya
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be running at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Other Ways to Edit
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+**Lovable (recommended for prompting)**
+Visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and continue building by prompting. All changes sync automatically to this repo.
 
-## What technologies are used for this project?
+**Edit directly on GitHub**
+Navigate to any file → click the pencil icon → make your changes → commit.
 
-This project is built with:
+**GitHub Codespaces**
+Click the green **Code** button on the repo → Codespaces tab → New Codespace. Edit and push from the browser.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## Deploying
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Open [Lovable]
+## Roadmaptps://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) 
 
-## Can I connect a custom domain to my Lovable project?
+**Share → Publish** to push a live update instantly.
 
-Yes, you can!
+To connect a custom domain: **Project → Settings → Domains → Connect Domain**
+[Read the docs →](https://docs.lovable.dev/features/custom-domain)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- [ ] Expand case database to 50+ cases
+- [ ] Add mobile-responsive layout
+- [ ] Leaderboard for quiz scores
+- [ ] User authentication (save progress)
+- [ ] Ghana-specific case law integration
+- [ ] Full React Native mobile app
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## About
+
+My Simple Esqwaya is a project aimed at improving legal education across Africa.
+
+---
+
+*"The law is not an end in itself, nor does it provide ends. It is preeminently a means to serve what we think is right." — William J. Brennan*
