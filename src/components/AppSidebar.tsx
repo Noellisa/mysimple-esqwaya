@@ -24,23 +24,22 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarContent className="border-r border-foreground">
+      <SidebarContent className="border-r border-sidebar-border backdrop-blur-xl">
         <div className="p-5 pb-4">
           {!collapsed ? (
             <>
-              <h1 className="font-hand text-2xl font-bold leading-tight text-foreground">
-                my simple
-                <br />
-                <span className="border-b-2 border-foreground pb-0.5">Esqwaya</span>
+              <h1 className="text-xl font-bold leading-tight tracking-tight">
+                my simple <span className="neon-text">Esqwaya</span>
               </h1>
-              <p className="text-xs text-muted-foreground mt-2 tracking-widest uppercase">
-                ~ law · study · notes ~
+              <p className="text-[10px] text-muted-foreground mt-2 tracking-[0.25em] uppercase">
+                law · study · quiz
               </p>
             </>
           ) : (
-            <span className="font-hand font-bold text-xl">E</span>
+            <span className="font-bold text-xl neon-text">E</span>
           )}
         </div>
+
 
         <SidebarGroup>
           <SidebarGroupContent>
