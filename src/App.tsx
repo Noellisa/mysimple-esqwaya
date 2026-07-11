@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import AppLayout from "@/components/AppLayout";
+import Welcome from "@/pages/Welcome";
 import CaseDirectory from "@/pages/CaseDirectory";
 import CaseRelationships from "@/pages/CaseRelationships";
 import StudyQuiz from "@/pages/StudyQuiz";
@@ -19,7 +20,8 @@ const App = () => (
       <BrowserRouter>
         <AppLayout>
           <Routes>
-            <Route path="/" element={<CaseDirectory />} />
+            <Route path="/" element={<Welcome />} />
+            <Route path="/cases" element={<CaseDirectory />} />
             <Route path="/relationships" element={<CaseRelationships />} />
             <Route path="/study" element={<StudyQuiz />} />
             <Route path="*" element={<NotFound />} />
