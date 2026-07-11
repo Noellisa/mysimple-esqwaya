@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['Kalam', 'cursive'],
+        body: ['Kalam', 'cursive'],
+        hand: ['Caveat', 'cursive'],
+        pen: ['Nanum Pen Script', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
