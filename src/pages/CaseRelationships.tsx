@@ -1,4 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
+import { Play, Scale } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import EnterTheTrial from "@/components/trial/EnterTheTrial";
 
 interface CaseNode {
   id: number;
@@ -48,6 +51,7 @@ export default function CaseRelationships() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [hoveredNode, setHoveredNode] = useState<number | null>(null);
   const [hoveredEdge, setHoveredEdge] = useState<number | null>(null);
+  const [trialCaseId, setTrialCaseId] = useState<number | null>(null);
 
   const connectedIds = useMemo(() => {
     if (selectedId === null) return new Set<number>();
@@ -64,7 +68,7 @@ export default function CaseRelationships() {
     [selectedId]
   );
 
-  const getNode = (id: number) => nodes.find((n) => n.id === id)!;
+  const getNode = (id: number) => nodes.find((n) => n.id === id);
 
   return (
     <div>
@@ -72,6 +76,15 @@ export default function CaseRelationships() {
         <h1 className="text-3xl font-bold text-foreground font-serif">Case Relationships</h1>
         <p className="text-muted-foreground mt-1">Explore how landmark cases connect through shared legal principles</p>
       </div>
+
+      {trialCaseId !== null ? (
+        <div className="max-w-4xl mb-8"><EnterTheTrial initialCaseId={trialCaseId} onClose={() => setTrialCaseId(null)} /></div>
+      ) : (
+        <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-5 mb-5 border-y border-border">
+          <div className="flex items-center gap-3"><Scale className="h-7 w-7 text-primary shrink-0"/><div><h2 className="text-xl font-semibold">Enter the Trial</h2><p className="text-sm text-muted-foreground">Nine cases. Three acts. A story to remember.</p></div></div>
+          <Button onClick={() => setTrialCaseId(selectedId ?? 1)}><Play className="h-4 w-4"/>Enter the Trial</Button>
+        </section>
+      )}
 
       {/* Legend */}
       <div className="flex gap-5 mb-4 flex-wrap">
@@ -94,6 +107,7 @@ export default function CaseRelationships() {
           {edges.map((e, i) => {
             const a = getNode(e.from);
             const b = getNode(e.to);
+            if (!a || !b) return null;
             const highlighted = isEdgeHighlighted(e);
             const dimmed = selectedId !== null && !highlighted;
             const isHovered = hoveredEdge === i;

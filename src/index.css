@@ -124,3 +124,41 @@
     color: transparent;
   }
 }
+
+/* Illustrated case-story stage. Colors stay in the shared theme. */
+@layer base {
+  :root {
+    --trial-paper: 220 25% 94%;
+    --trial-ink: 225 25% 21%;
+    --trial-highlight: 175 53% 35%;
+    --trial-fill: 175 30% 83%;
+    --trial-warning: 345 65% 48%;
+    --trial-line: 220 16% 67%;
+  }
+}
+@layer components {
+  .trial-art { background: hsl(var(--trial-paper)); }
+  .trial-scene { max-height: 350px; animation: trial-reveal .6s ease-out; }
+  .trial-line, .trial-connection, .trial-ground, .trial-water, .trial-warning, .trial-check {
+    fill: none; stroke: hsl(var(--trial-ink)); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .trial-ground { stroke: hsl(var(--trial-line)); stroke-width: 1; }
+  .trial-connection { stroke: hsl(var(--trial-highlight)); stroke-dasharray: 5 6; }
+  .trial-water { stroke: hsl(var(--trial-highlight)); stroke-width: 5; }
+  .trial-warning { stroke: hsl(var(--trial-warning)); }
+  .trial-person, .trial-object { fill: hsl(var(--trial-fill)); stroke: hsl(var(--trial-ink)); stroke-width: 3; stroke-linejoin: round; }
+  .trial-backdrop { fill: hsl(var(--trial-fill) / .4); }
+  .trial-label, .trial-detail, .trial-top-label { fill: hsl(var(--trial-ink)); font-family: var(--font-body); font-size: 14px; }
+  .trial-detail { font-size: 12px; }
+  .trial-top-label { font-size: 12px; font-weight: 600; }
+  .trial-arrowhead, .trial-verdict { fill: hsl(var(--trial-highlight)); }
+  .trial-check { stroke: hsl(var(--trial-paper)); }
+  .trial-flow { stroke-dasharray: 5 6; animation: trial-flow 1.2s linear infinite; }
+  .trial-emphasis { animation: trial-emphasis .8s ease-out; }
+}
+@keyframes trial-flow { to { stroke-dashoffset: -22; } }
+@keyframes trial-emphasis { from { opacity: 0; } to { opacity: 1; } }
+@keyframes trial-reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .trial-scene, .trial-flow, .trial-emphasis { animation: none; }
+}
