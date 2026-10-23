@@ -24,14 +24,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarContent className="border-r border-sidebar-border backdrop-blur-xl">
+      <SidebarContent className="border-r border-sidebar-border">
         <div className="p-5 pb-4">
           {!collapsed ? (
             <>
-              <h1 className="text-xl font-bold leading-tight tracking-tight">
-                my simple <span className="neon-text">Esqwaya</span>
+              <h1 className="text-xl font-bold leading-tight">
+                my simple<br /><span className="ink-underline">Esqwaya</span>
               </h1>
-              <p className="text-[10px] text-muted-foreground mt-2 tracking-[0.25em] uppercase">
+              <p className="text-[10px] text-muted-foreground mt-3 font-display">
                 law · study · quiz
               </p>
             </>
@@ -50,7 +50,7 @@ export function AppSidebar() {
                     <NavLink
                       to={item.url}
                       end={item.url === "/"}
-                      className="hover:bg-sidebar-accent transition-colors tracking-wide"
+                       className="hover:bg-sidebar-accent transition-colors"
                       activeClassName="bg-sidebar-accent text-foreground font-bold"
                     >
                       <item.icon className="mr-2 h-4 w-4" strokeWidth={1.5} />

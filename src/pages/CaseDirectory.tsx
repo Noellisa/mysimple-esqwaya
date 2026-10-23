@@ -11,9 +11,9 @@ import { cases, type Case } from "@/data/cases";
 const areas = ["All", "Company Law", "Contract Law", "Tort Law"] as const;
 
 const areaColors: Record<string, string> = {
-  "Company Law": "bg-primary/20 text-primary border-primary/30",
-  "Contract Law": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  "Tort Law": "bg-violet-500/20 text-violet-400 border-violet-500/30",
+  "Company Law": "case-company",
+  "Contract Law": "case-contract",
+  "Tort Law": "case-tort",
 };
 
 function DetailSection({ label, children }: { label: string; children: React.ReactNode }) {
@@ -43,11 +43,11 @@ export default function CaseDirectory() {
       {/* Left: List */}
       <div className={`flex-1 min-w-0 flex flex-col ${selectedCase ? "hidden md:flex" : "flex"}`}>
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-foreground font-serif">Case Directory</h1>
+          <h1 className="text-3xl font-bold text-foreground font-display">Case Directory</h1>
           <p className="text-muted-foreground mt-1">Browse landmark legal cases by area of law</p>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+        <div className="flex flex-col 2xl:flex-row 2xl:items-center gap-4 mb-6">
           <div className="relative max-w-md flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -116,7 +116,7 @@ export default function CaseDirectory() {
           </div>
 
           <ScrollArea className="flex-1 px-5 pb-5">
-            <h2 className="text-xl font-serif font-bold text-foreground mb-1">{selectedCase.name}</h2>
+            <h2 className="text-xl font-display font-bold text-foreground mb-1">{selectedCase.name}</h2>
             <p className="text-xs text-muted-foreground mb-4">({selectedCase.year})</p>
 
             <div className="space-y-4">

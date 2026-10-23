@@ -6,11 +6,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 min-w-0 flex flex-col">
           <header className="h-14 flex items-center border-b border-border px-4">
             <SidebarTrigger className="text-muted-foreground hover:text-primary transition-colors" />
           </header>
-          <main className="flex-1 p-6 overflow-auto">
+           <main className="flex-1 p-6 md:p-8 overflow-auto">
             {children}
           </main>
         </div>

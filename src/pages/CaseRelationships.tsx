@@ -40,9 +40,9 @@ const edges: Edge[] = [
 ];
 
 const areaColors: Record<string, { fill: string; stroke: string; label: string }> = {
-  "Company Law": { fill: "hsl(43 80% 55% / 0.25)", stroke: "hsl(43 80% 55%)", label: "hsl(43 80% 55%)" },
-  "Contract Law": { fill: "hsl(160 60% 45% / 0.25)", stroke: "hsl(160 60% 45%)", label: "hsl(160 60% 45%)" },
-  "Tort Law": { fill: "hsl(270 50% 60% / 0.25)", stroke: "hsl(270 50% 60%)", label: "hsl(270 50% 60%)" },
+  "Company Law": { fill: "hsl(var(--case-company) / 0.25)", stroke: "hsl(var(--case-company))", label: "hsl(var(--case-company))" },
+  "Contract Law": { fill: "hsl(var(--case-contract) / 0.25)", stroke: "hsl(var(--case-contract))", label: "hsl(var(--case-contract))" },
+  "Tort Law": { fill: "hsl(var(--case-tort) / 0.25)", stroke: "hsl(var(--case-tort))", label: "hsl(var(--case-tort))" },
 };
 
 const NODE_R = 28;
@@ -73,7 +73,7 @@ export default function CaseRelationships() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-foreground font-serif">Case Relationships</h1>
+        <h1 className="text-3xl font-bold text-foreground font-display">Case Relationships</h1>
         <p className="text-muted-foreground mt-1">Explore how landmark cases connect through shared legal principles</p>
       </div>
 
@@ -125,7 +125,7 @@ export default function CaseRelationships() {
                 />
                 <line
                   x1={a.x} y1={a.y} x2={b.x} y2={b.y}
-                  stroke={highlighted ? "hsl(43 80% 55%)" : "hsl(220 15% 30%)"}
+                  stroke={highlighted ? "hsl(var(--case-company))" : "hsl(var(--border))"}
                   strokeWidth={highlighted || isHovered ? 2.5 : 1.5}
                   strokeDasharray={highlighted ? "none" : "6 4"}
                   opacity={dimmed ? 0.15 : isHovered ? 1 : 0.6}
@@ -140,15 +140,15 @@ export default function CaseRelationships() {
                       width={e.principle.length * 7}
                       height={22}
                       rx={4}
-                      fill="hsl(220 28% 14%)"
-                      stroke="hsl(220 15% 30%)"
+                      fill="hsl(var(--popover))"
+                      stroke="hsl(var(--border))"
                       strokeWidth={1}
                     />
                     <text
                       x={(a.x + b.x) / 2}
                       y={(a.y + b.y) / 2 - 10}
                       textAnchor="middle"
-                      fill="hsl(45 30% 85%)"
+                      fill="hsl(var(--foreground))"
                       fontSize={11}
                       className="pointer-events-none"
                     >
@@ -212,7 +212,7 @@ export default function CaseRelationships() {
                       width={n.name.length * 6.4}
                       height={22}
                       rx={4}
-                      fill="hsl(220 28% 14%)"
+                      fill="hsl(var(--popover))"
                       stroke={c.stroke}
                       strokeWidth={1}
                     />
@@ -220,7 +220,7 @@ export default function CaseRelationships() {
                       x={n.x}
                       y={n.y - NODE_R - 16}
                       textAnchor="middle"
-                      fill="hsl(45 30% 90%)"
+                      fill="hsl(var(--foreground))"
                       fontSize={11}
                       fontWeight={500}
                     >
