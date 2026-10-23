@@ -154,9 +154,10 @@
   .trial-arrowhead, .trial-verdict { fill: hsl(var(--trial-highlight)); }
   .trial-check { stroke: hsl(var(--trial-paper)); }
   .trial-flow { stroke-dasharray: 5 6; animation: trial-flow 1.2s linear infinite; }
-  .trial-emphasis { animation: trial-reveal .8s ease-out; }
+  .trial-emphasis { animation: trial-emphasis .8s ease-out; }
 }
 @keyframes trial-flow { to { stroke-dashoffset: -22; } }
+@keyframes trial-emphasis { from { opacity: 0; } to { opacity: 1; } }
 @keyframes trial-reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) {
   .trial-scene, .trial-flow, .trial-emphasis { animation: none; }
