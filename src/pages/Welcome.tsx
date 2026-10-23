@@ -1,103 +1,36 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, GitFork, GraduationCap, Sparkles } from "lucide-react";
-import heroImg from "@/assets/welcome-hero.jpg";
+import { ArrowRight, BookOpen, GitFork, GraduationCap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import heroImg from "@/assets/ink-study.jpg";
 
 const features = [
-  {
-    icon: BookOpen,
-    title: "Case Directory",
-    desc: "Landmark cases with facts, ratio & principles.",
-    to: "/cases",
-  },
-  {
-    icon: GitFork,
-    title: "Relationships",
-    desc: "Visualise how precedents connect.",
-    to: "/relationships",
-  },
-  {
-    icon: GraduationCap,
-    title: "Study & Quiz",
-    desc: "Flashcards and multiple-choice practice.",
-    to: "/study",
-  },
+  { icon: BookOpen, title: "Case Directory", to: "/cases", number: "01" },
+  { icon: GitFork, title: "Case Relationships", to: "/relationships", number: "02" },
+  { icon: GraduationCap, title: "Study & Quiz", to: "/study", number: "03" },
 ];
 
 export default function Welcome() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10 md:py-16">
-      {/* Hero */}
-      <section className="glass-strong glass-glow overflow-hidden relative p-6 md:p-10 mb-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs tracking-wider uppercase text-primary">
-              <Sparkles className="h-3.5 w-3.5" />
-              For Ghanaian law students
-            </div>
-            <h1 className="mt-5 text-4xl md:text-6xl font-bold leading-[1.05]">
-              my simple <span className="neon-text">Esqwaya</span>
-            </h1>
-            <p className="mt-5 text-lg text-muted-foreground max-w-md leading-relaxed">
-              A liquid, luminous companion for studying case law — collect cases,
-              map their connections, and quiz what sticks.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/cases"
-                className="group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-primary-foreground"
-                style={{ background: "var(--gradient-glow)", boxShadow: "var(--shadow-glow)" }}
-              >
-                Open case directory
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                to="/study"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-5 py-2.5 text-sm font-medium hover:bg-white/10 transition"
-              >
-                Start a quiz
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl opacity-60 blur-3xl"
-                 style={{ background: "var(--gradient-glow-soft)" }} />
-            <img
-              src={heroImg}
-              alt="Glowing glass illustration of a law book with floating justice icons"
-              width={1280}
-              height={1024}
-              className="relative rounded-2xl border border-white/10 shadow-2xl"
-            />
+    <div className="max-w-6xl mx-auto">
+      <div className="flex justify-between items-center text-xs font-display text-muted-foreground pb-5 border-b border-border">
+        <span>law · study · a little curiosity</span><span aria-hidden="true" className="text-xl text-foreground">~</span>
+      </div>
+      <section className="welcome-story">
+        <img src={heroImg} alt="Black ink illustration of a Ghanaian law student studying beside books and scales of justice" width={1536} height={1024} className="welcome-art" />
+        <div className="welcome-copy">
+          <p className="text-xs font-display text-muted-foreground mb-6">For Ghanaian law students</p>
+          <h1 className="text-4xl lg:text-5xl font-bold leading-tight">my simple<br /><span className="ink-underline">Esqwaya</span></h1>
+          <p className="mt-7 text-base text-muted-foreground max-w-xs leading-relaxed">Every case has a story.<br />Make it part of yours.</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button asChild><Link to="/cases">Open case directory <ArrowRight /></Link></Button>
+            <Button asChild variant="outline"><Link to="/study">Start a quiz</Link></Button>
           </div>
         </div>
       </section>
-
-      {/* Features */}
-      <section className="grid md:grid-cols-3 gap-5">
-        {features.map((f) => (
-          <Link
-            key={f.title}
-            to={f.to}
-            className="glass p-6 group hover:border-white/20 transition relative overflow-hidden"
-          >
-            <div
-              className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-30 blur-2xl group-hover:opacity-60 transition"
-              style={{ background: "var(--gradient-glow)" }}
-            />
-            <f.icon className="h-6 w-6 text-primary relative" strokeWidth={1.5} />
-            <h3 className="mt-4 text-xl font-semibold relative">{f.title}</h3>
-            <p className="mt-1.5 text-sm text-muted-foreground relative">{f.desc}</p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary relative">
-              Explore <ArrowRight className="h-3.5 w-3.5" />
-            </span>
-          </Link>
-        ))}
+      <section className="grid sm:grid-cols-3 border-y border-border">
+        {features.map(f => <Button key={f.title} variant="ghost" asChild className="h-auto whitespace-normal justify-start rounded-none px-4 py-6 sm:py-8 border-b sm:border-b-0 last:border-b-0 sm:border-r last:border-r-0 border-border"><Link to={f.to}><span className="font-display text-xs text-muted-foreground mr-2">{f.number}</span><f.icon strokeWidth={1.5}/><span className="font-display text-sm">{f.title}</span><ArrowRight className="ml-auto shrink-0"/></Link></Button>)}
       </section>
-
-      <footer className="mt-14 flex justify-between text-xs text-muted-foreground tracking-widest uppercase">
-        <span>Accra · 2026</span>
-        <span>v.01 — liquid edition</span>
-      </footer>
+      <footer className="mt-8 flex justify-between gap-3 text-xs text-muted-foreground font-display"><span>A case at a time.</span><span>my simple Esqwaya ~</span></footer>
     </div>
   );
 }
