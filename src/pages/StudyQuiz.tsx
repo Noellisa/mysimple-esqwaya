@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useMemo, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, RotateCcw, Sparkles, X } from "lucide-react";
 
@@ -75,7 +76,7 @@ export default function StudyQuiz() {
   return (
     <div className="max-w-4xl mx-auto">
       <header className="mb-8">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs uppercase tracking-wider text-primary mb-3">
+        <div className="inline-flex items-center gap-2 rounded-md border border-border bg-muted px-3 py-1 text-xs uppercase tracking-wider text-primary mb-3">
           <Sparkles className="h-3.5 w-3.5" /> Practice mode
         </div>
         <h1 className="text-4xl font-bold">Study &amp; Quiz</h1>
@@ -84,18 +85,18 @@ export default function StudyQuiz() {
 
       <div className="glass inline-flex p-1 mb-8">
         {(["flashcards", "quiz"] as Mode[]).map((m) => (
-          <button
+          <Button variant="outline"
             key={m}
             onClick={() => setMode(m)}
-            className={`px-5 py-2 text-sm rounded-xl capitalize transition ${
+            className={`px-5 py-2 text-sm rounded-md capitalize transition ${
               mode === m
-                ? "text-primary-foreground"
+                ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:text-foreground"
             }`}
-            style={mode === m ? { background: "var(--gradient-glow)" } : undefined}
+            
           >
             {m}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -121,9 +122,9 @@ function Flashcards() {
         <span className="uppercase tracking-wider text-primary">{card.area}</span>
       </div>
 
-      <button
+      <Button variant="outline"
         onClick={() => setFlipped((f) => !f)}
-        className="glass-strong glass-glow w-full min-h-[280px] md:min-h-[340px] p-8 md:p-12 flex items-center justify-center text-center transition hover:scale-[1.01]"
+        className="whitespace-normal h-auto glass-strong glass-glow w-full min-h-[280px] md:min-h-[340px] p-8 md:p-12 flex items-center justify-center text-center transition hover:scale-[1.01]"
       >
         <div>
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
@@ -134,27 +135,27 @@ function Flashcards() {
           </p>
           <p className="text-xs text-muted-foreground mt-6">Tap to flip</p>
         </div>
-      </button>
+      </Button>
 
       <div className="mt-6 flex items-center justify-between gap-3">
-        <button
+        <Button variant="outline"
           onClick={() => go(-1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-white/20"
+          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
         >
           <ChevronLeft className="h-4 w-4" /> Previous
-        </button>
-        <button
+        </Button>
+        <Button variant="outline"
           onClick={() => setFlipped((f) => !f)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-white/20"
+          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
         >
           <RotateCcw className="h-4 w-4" /> Flip
-        </button>
-        <button
+        </Button>
+        <Button variant="outline"
           onClick={() => go(1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-white/20"
+          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
         >
           Next <ChevronRight className="h-4 w-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -195,13 +196,13 @@ function Quiz() {
         <p className="mt-3 text-muted-foreground">
           {percent >= 80 ? "Excellent — you're ready." : percent >= 50 ? "Good — review the misses." : "Keep studying, you've got this."}
         </p>
-        <button
+        <Button variant="outline"
           onClick={reset}
-          className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm text-primary-foreground"
-          style={{ background: "var(--gradient-glow)", boxShadow: "var(--shadow-glow)" }}
+          className="mt-8 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground"
+          
         >
           <RotateCcw className="h-4 w-4" /> Restart
-        </button>
+        </Button>
       </div>
     );
   }
@@ -213,10 +214,10 @@ function Quiz() {
         <span>Score: <span className="text-primary font-medium">{score}</span></span>
       </div>
 
-      <div className="h-1.5 rounded-full bg-white/5 overflow-hidden mb-6">
+      <div className="h-1.5 rounded-md bg-muted overflow-hidden mb-6">
         <div
-          className="h-full transition-all"
-          style={{ width: `${((i + (selected !== null ? 1 : 0)) / quiz.length) * 100}%`, background: "var(--gradient-glow)" }}
+          className="h-full transition-all bg-primary"
+          style={{ width: `${((i + (selected !== null ? 1 : 0)) / quiz.length) * 100}%` }}
         />
       </div>
 
@@ -227,41 +228,41 @@ function Quiz() {
             const isSel = selected === idx;
             const isCorrect = idx === q.answer;
             const revealed = selected !== null;
-            let cls = "border-white/10 hover:border-white/20 hover:bg-white/5";
-            if (revealed && isCorrect) cls = "border-emerald-400/50 bg-emerald-400/10";
-            else if (revealed && isSel && !isCorrect) cls = "border-rose-400/50 bg-rose-400/10";
-            else if (revealed) cls = "border-white/5 opacity-60";
+            let cls = "border-border hover:border-primary hover:bg-muted";
+            if (revealed && isCorrect) cls = "quiz-correct";
+            else if (revealed && isSel && !isCorrect) cls = "quiz-incorrect";
+            else if (revealed) cls = "border-border opacity-60";
             return (
-              <button
+              <Button variant="outline"
                 key={idx}
                 disabled={selected !== null}
                 onClick={() => submit(idx)}
-                className={`w-full text-left px-4 py-3 rounded-xl border transition flex items-center justify-between gap-3 ${cls}`}
+                className={`whitespace-normal h-auto w-full text-left px-4 py-3 rounded-md border transition flex items-center justify-between gap-3 ${cls}`}
               >
                 <span>{c}</span>
-                {revealed && isCorrect && <Check className="h-4 w-4 text-emerald-400 shrink-0" />}
-                {revealed && isSel && !isCorrect && <X className="h-4 w-4 text-rose-400 shrink-0" />}
-              </button>
+                {revealed && isCorrect && <Check className="h-4 w-4 text-primary shrink-0" />}
+                {revealed && isSel && !isCorrect && <X className="h-4 w-4 text-destructive shrink-0" />}
+              </Button>
             );
           })}
         </div>
 
         {selected !== null && (
-          <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-foreground/90">
+          <div className="mt-6 rounded-md border border-border bg-muted p-4 text-sm text-foreground/90">
             <span className="text-primary font-medium">Why: </span>{q.explanation}
           </div>
         )}
       </div>
 
       <div className="mt-6 flex justify-end">
-        <button
+        <Button variant="outline"
           onClick={next}
           disabled={selected === null}
-          className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm text-primary-foreground disabled:opacity-40"
-          style={{ background: "var(--gradient-glow)", boxShadow: "var(--shadow-glow)" }}
+          className="inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground disabled:opacity-40"
+          
         >
           {i === quiz.length - 1 ? "See result" : "Next"} <ChevronRight className="h-4 w-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );
