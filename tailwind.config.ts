@@ -14,10 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Kalam', 'cursive'],
-        body: ['Kalam', 'cursive'],
-        hand: ['Caveat', 'cursive'],
-        pen: ['Nanum Pen Script', 'cursive'],
+        display: ['Courier New', 'monospace'],
+        body: ['Arial', 'sans-serif'],
+        hand: ['Courier New', 'monospace'],
+        pen: ['Courier New', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
