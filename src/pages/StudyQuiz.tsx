@@ -134,22 +134,13 @@ function Flashcards() {
       </Button>
 
       <div className="mt-6 flex items-center justify-between gap-3">
-        <Button variant="outline"
-          onClick={() => go(-1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => go(-1)}>
           <ChevronLeft className="h-4 w-4" /> Previous
         </Button>
-        <Button variant="outline"
-          onClick={() => setFlipped((f) => !f)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => setFlipped((f) => !f)}>
           <RotateCcw className="h-4 w-4" /> Flip
         </Button>
-        <Button variant="outline"
-          onClick={() => go(1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => go(1)}>
           Next <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
@@ -192,11 +183,7 @@ function Quiz() {
         <p className="mt-3 text-muted-foreground">
           {percent >= 80 ? "Excellent — you're ready." : percent >= 50 ? "Good — review the misses." : "Keep studying, you've got this."}
         </p>
-        <Button variant="outline"
-          onClick={reset}
-          className="mt-8 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground"
-          
-        >
+        <Button onClick={reset} className="mt-8">
           <RotateCcw className="h-4 w-4" /> Restart
         </Button>
       </div>
@@ -251,12 +238,7 @@ function Quiz() {
       </div>
 
       <div className="mt-6 flex justify-end">
-        <Button variant="outline"
-          onClick={next}
-          disabled={selected === null}
-          className="inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground disabled:opacity-40"
-          
-        >
+        <Button onClick={next} disabled={selected === null}>
           {i === quiz.length - 1 ? "See result" : "Next"} <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
