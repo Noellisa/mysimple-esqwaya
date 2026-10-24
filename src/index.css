@@ -97,6 +97,32 @@
 @keyframes trial-flow { to { stroke-dashoffset: -22; } }
 @keyframes trial-emphasis { from { opacity: 0; } to { opacity: 1; } }
 @keyframes trial-reveal { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Per-case motions so each trial story moves differently. */
+.trial-motion-split, .trial-motion-stamp, .trial-motion-fly, .trial-motion-puff,
+.trial-motion-swap, .trial-motion-turn, .trial-motion-fizz, .trial-motion-scan, .trial-motion-flood {
+  transform-box: fill-box; transform-origin: center;
+}
+.trial-motion-split { animation: trial-split 3s ease-in-out infinite; }
+.trial-motion-stamp { animation: trial-stamp 2.2s ease-in-out infinite; }
+.trial-motion-fly { animation: trial-fly 3.2s ease-in-out infinite; }
+.trial-motion-puff { animation: trial-puff 2.6s ease-in-out infinite; }
+.trial-motion-swap { animation: trial-swap 2.4s ease-in-out infinite; }
+.trial-motion-turn { animation: trial-turn 4s linear infinite; }
+.trial-motion-fizz { animation: trial-fizz 1.6s ease-in-out infinite; }
+.trial-motion-scan { animation: trial-scan 2.8s ease-in-out infinite; }
+.trial-motion-flood { animation: trial-flood 3s ease-in-out infinite; }
+@keyframes trial-split { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(10px); } }
+@keyframes trial-stamp { 0%, 55%, 100% { transform: translateY(0); } 65% { transform: translateY(7px); } 75% { transform: translateY(-2px); } }
+@keyframes trial-fly { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 30% { transform: translate(8px, -9px) rotate(-3deg); } 65% { transform: translate(-6px, 5px) rotate(2deg); } }
+@keyframes trial-puff { 0%, 100% { transform: translateY(0) scale(1); opacity: 1; } 50% { transform: translateY(-8px) scale(1.04); opacity: .85; } }
+@keyframes trial-swap { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
+@keyframes trial-turn { to { transform: rotate(360deg); } }
+@keyframes trial-fizz { 0%, 100% { transform: translateY(0); } 25% { transform: translateY(-4px); } 50% { transform: translateY(1px); } 75% { transform: translateY(-2px); } }
+@keyframes trial-scan { 0%, 100% { transform: translateY(-6px); opacity: .9; } 50% { transform: translateY(6px); opacity: 1; } }
+@keyframes trial-flood { 0%, 100% { transform: translateY(3px); } 50% { transform: translateY(-4px); } }
 @media (prefers-reduced-motion: reduce) {
-  .trial-scene, .trial-flow, .trial-emphasis { animation: none; }
+  .trial-scene, .trial-flow, .trial-emphasis,
+  .trial-motion-split, .trial-motion-stamp, .trial-motion-fly, .trial-motion-puff,
+  .trial-motion-swap, .trial-motion-turn, .trial-motion-fizz, .trial-motion-scan, .trial-motion-flood { animation: none; }
 }

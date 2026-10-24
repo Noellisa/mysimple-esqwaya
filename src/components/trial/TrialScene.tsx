@@ -18,7 +18,7 @@ export default function TrialScene({ story, stage }: { story: Story; stage: numb
     <path d="M60 280h580" className="trial-ground"/>
     <circle cx="350" cy="194" r="100" className="trial-backdrop"/>
     <Person x={140} label={story.labels[0]}/><Person x={560} label={story.labels[2]}/>
-    <ObjectScene id={story.id} stage={stage}/>
+    <g className={`trial-motion-${story.motion}`}><ObjectScene id={story.id} stage={stage}/></g>
     <path d="M192 195h72M436 195h72" className={`trial-connection ${stage === 1 ? "trial-flow" : ""}`} markerEnd="url(#trial-arrow)"/>
     <text x="350" y="62" textAnchor="middle" className="trial-top-label">{stage === 0 ? story.labels[1] : stage === 1 ? "THE DISPUTE" : "THE DECISION"}</text>
     {stage === 2 && <g transform="translate(350 88)" className="trial-emphasis"><circle r="19" className="trial-verdict"/><path d="M-9 0l6 6L10-7" className="trial-check"/></g>}
