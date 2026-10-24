@@ -19,8 +19,14 @@ const navItems = [
 ];
 
 export function AppSidebar() {
-  const { state } = useSidebar();
+  const { state, isMobile, setOpen, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
+
+  // Return the sidebar to its resting state once the user has chosen a page.
+  const collapseAfterSelect = () => {
+    if (isMobile) setOpenMobile(false);
+    else setOpen(false);
+  };
 
   return (
     <Sidebar collapsible="icon">
@@ -36,7 +42,7 @@ export function AppSidebar() {
               </p>
             </>
           ) : (
-            <span className="font-bold text-xl neon-text">E</span>
+            <span className="font-bold text-xl text-foreground">E</span>
           )}
         </div>
 
@@ -50,6 +56,7 @@ export function AppSidebar() {
                     <NavLink
                       to={item.url}
                       end={item.url === "/"}
+                      onClick={collapseAfterSelect}
                        className="hover:bg-sidebar-accent transition-colors"
                       activeClassName="bg-sidebar-accent text-foreground font-bold"
                     >
