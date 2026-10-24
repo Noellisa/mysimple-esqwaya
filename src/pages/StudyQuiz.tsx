@@ -83,17 +83,13 @@ export default function StudyQuiz() {
         <p className="text-muted-foreground mt-1">Reinforce the landmark cases with flashcards and multiple-choice questions.</p>
       </header>
 
-      <div className="glass inline-flex p-1 mb-8">
+      <div className="glass inline-flex p-1 mb-8 gap-1">
         {(["flashcards", "quiz"] as Mode[]).map((m) => (
-          <Button variant="outline"
+          <Button
             key={m}
+            variant={mode === m ? "default" : "ghost"}
             onClick={() => setMode(m)}
-            className={`px-5 py-2 text-sm rounded-md capitalize transition ${
-              mode === m
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-            
+            className="px-5 py-2 text-sm capitalize"
           >
             {m}
           </Button>
@@ -124,7 +120,7 @@ function Flashcards() {
 
       <Button variant="outline"
         onClick={() => setFlipped((f) => !f)}
-        className="whitespace-normal h-auto glass-strong glass-glow w-full min-h-[280px] md:min-h-[340px] p-8 md:p-12 flex items-center justify-center text-center transition hover:scale-[1.01]"
+        className="whitespace-normal h-auto glass-strong w-full min-h-[280px] md:min-h-[340px] p-8 md:p-12 flex items-center justify-center text-center transition hover:scale-[1.01]"
       >
         <div>
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
@@ -138,22 +134,13 @@ function Flashcards() {
       </Button>
 
       <div className="mt-6 flex items-center justify-between gap-3">
-        <Button variant="outline"
-          onClick={() => go(-1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => go(-1)}>
           <ChevronLeft className="h-4 w-4" /> Previous
         </Button>
-        <Button variant="outline"
-          onClick={() => setFlipped((f) => !f)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => setFlipped((f) => !f)}>
           <RotateCcw className="h-4 w-4" /> Flip
         </Button>
-        <Button variant="outline"
-          onClick={() => go(1)}
-          className="glass px-4 py-2.5 inline-flex items-center gap-2 hover:border-primary"
-        >
+        <Button variant="outline" onClick={() => go(1)}>
           Next <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
@@ -190,17 +177,13 @@ function Quiz() {
 
   if (done) {
     return (
-      <div className="glass-strong glass-glow p-10 text-center">
+      <div className="glass-strong p-10 text-center">
         <p className="text-xs uppercase tracking-widest text-muted-foreground">Result</p>
-        <p className="mt-4 text-6xl font-bold neon-text">{score}/{quiz.length}</p>
+        <p className="mt-4 text-6xl font-bold font-display">{score}/{quiz.length}</p>
         <p className="mt-3 text-muted-foreground">
           {percent >= 80 ? "Excellent — you're ready." : percent >= 50 ? "Good — review the misses." : "Keep studying, you've got this."}
         </p>
-        <Button variant="outline"
-          onClick={reset}
-          className="mt-8 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground"
-          
-        >
+        <Button onClick={reset} className="mt-8">
           <RotateCcw className="h-4 w-4" /> Restart
         </Button>
       </div>
@@ -255,12 +238,7 @@ function Quiz() {
       </div>
 
       <div className="mt-6 flex justify-end">
-        <Button variant="outline"
-          onClick={next}
-          disabled={selected === null}
-          className="inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm bg-primary text-primary-foreground disabled:opacity-40"
-          
-        >
+        <Button onClick={next} disabled={selected === null}>
           {i === quiz.length - 1 ? "See result" : "Next"} <ChevronRight className="h-4 w-4" />
         </Button>
       </div>
